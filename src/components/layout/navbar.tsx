@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const phoneNumber = "6281807597477";
+  const phoneNumber = "6281283807770";
 
   const message =
     "Hello Optimal Tax Solutions, I would like to ask about your services.";
