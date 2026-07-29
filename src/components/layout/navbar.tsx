@@ -6,74 +6,146 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const phoneNumber = "6281807597477";
+
+  const message =
+    "Hello Optimal Tax Solutions, I would like to ask about your services.";
+
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message,
+  )}`;
+
   return (
-    <header className="absolute top-0 left-0 z-50 w-full">
-      <div className="w-full mx-auto px-6 lg:px-20 py-6 lg:py-10 flex items-center justify-between">
-        {/* Logo */}
-        <img
-          src="/assets/logo/logoStk.png"
-          alt="Sena Tama Konsultindo"
-          className="w-50 lg:w-70"
-        />
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
+  <div className="max-w-7xl mx-auto px-6 lg:px-20 py-5 flex items-center justify-between">
 
-        {/* Desktop Menu */}
-        <nav className="hidden lg:block">
-          <ul className="flex gap-20 text-primary">
-            <li className="hover:text-blue-500 font-bold cursor-pointer">
-              <a href="#home">Home</a>
-            </li>
+    {/* Logo */}
+    <img
+      src="/assets/logo/ots.png"
+      alt="Optimal Tax Solutions"
+      className="w-44 md:w-52 xl:w-64 shrink-0"
+    />
 
-            <li className="hover:text-blue-500 font-bold cursor-pointer">
-              <a href="#about">About</a>
-            </li>
+    {/* Desktop Menu */}
+    <nav className="hidden xl:block">
+      <ul className="flex items-center gap-10 text-primary font-semibold">
 
-            <li className="hover:text-blue-500 font-bold cursor-pointer">
-              <a href="#services">Services</a>
-            </li>
+        <li>
+          <a
+            href="#home"
+            className="hover:text-blue-500 transition-colors duration-300"
+          >
+            Home
+          </a>
+        </li>
 
-            <li className="hover:text-blue-500 font-bold cursor-pointer">
-              <a href="#testimonial">Testimoni</a>
-            </li>
-          </ul>
-        </nav>
+        <li>
+          <a
+            href="#about"
+            className="hover:text-blue-500 transition-colors duration-300"
+          >
+            About
+          </a>
+        </li>
 
-        {/* Desktop Button */}
-        <button className="hidden lg:block bg-primary hover:bg-blue-700 px-6 py-2 text-white rounded-full font-medium cursor-pointer">
-          Contact Us
-        </button>
+        <li>
+          <a
+            href="#services"
+            className="hover:text-blue-500 transition-colors duration-300"
+          >
+            Services
+          </a>
+        </li>
 
-        {/* Burger Button */}
-        <button
-          className="lg:hidden text-primary"
-          onClick={() => setIsOpen(!isOpen)}
+        <li>
+          <a
+            href="#testimonial"
+            className="hover:text-blue-500 transition-colors duration-300"
+          >
+            Testimonial
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    {/* Desktop Button */}
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hidden xl:inline-flex items-center justify-center bg-primary hover:bg-blue-700 transition-colors duration-300 text-white px-6 py-3 rounded-full font-medium"
+    >
+      Contact Us
+    </a>
+
+    {/* Mobile Button */}
+    <button
+      onClick={() => setIsOpen(!isOpen)}
+      className="xl:hidden text-primary"
+    >
+      {isOpen ? <X size={30} /> : <Menu size={30} />}
+    </button>
+
+  </div>
+
+  {/* Mobile Menu */}
+  {isOpen && (
+    <div className="xl:hidden border-t bg-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 py-6">
+
+        <ul className="flex flex-col gap-6 text-primary font-semibold">
+
+          <li>
+            <a
+              href="#home"
+              className="block hover:text-blue-500"
+            >
+              Home
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#about"
+              className="block hover:text-blue-500"
+            >
+              About
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#services"
+              className="block hover:text-blue-500"
+            >
+              Services
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#testimonial"
+              className="block hover:text-blue-500"
+            >
+              Testimonial
+            </a>
+          </li>
+
+        </ul>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 flex justify-center items-center bg-primary hover:bg-blue-700 transition-colors duration-300 text-white py-3 rounded-full font-medium"
         >
-          {isOpen ? <X size={32} /> : <Menu size={32} />}
-        </button>
+          Contact Us
+        </a>
+
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-white px-6 py-6">
-          <ul className="flex flex-col gap-6 text-primary font-bold">
-            <li className="hover:text-blue-300 font-bold cursor-pointer">
-              <a href="#home">Home</a>
-            </li>
-            <li className="hover:text-blue-300 font-bold cursor-pointer">
-              <a href="#about">About</a>
-            </li>
-            <li className="hover:text-blue-300 font-bold cursor-pointer">
-              <a href="#services">Services</a>
-            </li>
-            <li className="hover:text-blue-300 font-bold cursor-pointer">
-              <a href="#testimonial">Testimoni</a>
-            </li>
-          </ul>
-
-          <button className="mt-6 w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-full">
-            Contact Us
-          </button>
-        </div>
-      )}
-    </header>
+    </div>
+  )}
+</header>
   );
 }

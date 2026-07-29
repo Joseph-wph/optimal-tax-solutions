@@ -29,50 +29,71 @@ const why = [
 
 export default function Why() {
   return (
-    <section className="w-full mx-auto lg:px-20 py-6 lg:py-10 flex items-center justify-center">
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
-        {/* Image */}
-        <div className="w-screen lg:w-200 lg:h-auto lg:rounded-4xl h-62 object-cover order-2 lg:order-1">
-          <img src="/assets/image/meetingRoom.jpg" alt="Meeting Room" />
-        </div>
+    <section className="w-full py-12 lg:py-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-20">
+        <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] gap-12 items-center">
+          {/* LEFT */}
+          <div className="flex flex-col gap-10">
+            {/* Heading */}
+            <div className="flex flex-col gap-4 text-center xl:text-left">
+              <p className="text-base font-semibold text-secondary">
+                Why Choose Us
+              </p>
 
-        {/* Text */}
-        <div className="flex flex-col justify-center lg:items-start items-center gap-10 px-5 order-1 lg:order-2">
-          <div className="flex flex-col justify-center items-center lg:items-start gap-5">
-            <p className="text-[16px] font-semibold text-secondary">
-              Why Choose Us
-            </p>
-            <h1 className="font-heading font-bold text-3xl text-primary">
-              Your Tusted Partner
-              <br />
-              for Business Success
-            </h1>
+              <h2 className="font-heading font-bold text-3xl lg:text-4xl xl:text-5xl text-primary leading-tight max-w-xl mx-auto xl:mx-0">
+                Your Trusted Partner
+                <br />
+                for Business Success
+              </h2>
+            </div>
+
+            {/* Features */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {why.map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <div key={index} className="flex items-start gap-5">
+                    <div className="flex items-center justify-center w-14 h-14 rounded-full bg-primary shrink-0">
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-black mb-2">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-sm leading-7 text-gray-600">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {why.map((item, index) => {
-              const Icon = item.icon;
+          {/* RIGHT */}
+          <div className="relative h-[350px] md:h-[450px] xl:h-[620px] overflow-visible">
+            {/* Gradient */}
+            <div className="absolute inset-y-0 left-0 w-44 lg:w-56 bg-gradient-to-r from-white via-white/80 to-transparent z-20" />
 
-              return (
-                <div key={index} className="flex items-start gap-5">
-                  {/* Icon */}
-                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-primary shrink-0">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-
-                  {/* Text */}
-                  <div className="flex flex-col">
-                    <h3 className="font-open text-lg font-bold text-black">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-gray-500 font-open-sans font-medium text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            {/* Image */}
+            <img
+              src="/assets/image/image4.jpg"
+              alt="Office Room"
+              className="
+            w-full
+            h-full
+            object-cover
+            object-center
+            rounded-2xl
+            xl:absolute
+            xl:right-[-70px]
+            xl:top-0
+            xl:w-[115%]
+          "
+            />
           </div>
         </div>
       </div>

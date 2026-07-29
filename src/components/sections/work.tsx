@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { Fragment } from "react";
 
 const why = [
   {
@@ -27,52 +28,58 @@ const why = [
 
 export default function Work() {
   return (
-    <section className="w-full mx-auto lg:px-20 py-10 flex items-center justify-center bg-tertiary">
-      <div className="flex flex-col justify-center items-center gap-10 px-5">
-        {/* Text */}
-        <div className="flex flex-col justify-center items-center gap-5">
-          <p className="text-[16px] font-semibold text-secondary">
-            How We Work
-          </p>
-          <h1 className="font-heading font-bold text-3xl text-primary text-center max-w-xl lg:w-full">
-            Simple Process, Clear Results
-          </h1>
+    <section className="w-full bg-tertiary py-12 lg:py-20">
+  <div className="max-w-7xl mx-auto px-6 lg:px-20">
+
+    {/* Heading */}
+    <div className="flex flex-col items-center text-center gap-4 mb-12">
+      <p className="text-base font-semibold text-secondary">
+        How We Work
+      </p>
+
+      <h2 className="font-heading font-bold text-3xl lg:text-4xl text-primary max-w-2xl">
+        Simple Process, Clear Results
+      </h2>
+    </div>
+
+    {/* Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+      {why.map((item, index) => (
+        <div key={index} className="relative">
+
+          {/* Chevron Desktop */}
+          {index !== why.length - 1 && (
+            <div className="hidden xl:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10">
+              <ChevronRight className="text-secondary w-7 h-7" />
+            </div>
+          )}
+
+          {/* Card */}
+          <div className="bg-[#F4E9DF] rounded-2xl shadow-lg p-6 h-full min-h-[180px] flex gap-5">
+
+            {/* Number */}
+            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-secondary text-secondary font-semibold shrink-0">
+              {item.number}
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col">
+              <h3 className="text-lg font-bold text-black mb-2">
+                {item.title}
+              </h3>
+
+              <p className="text-sm leading-7 text-gray-600">
+                {item.description}
+              </p>
+            </div>
+
+          </div>
         </div>
+      ))}
 
-        {/* Work */}
-        <div className="grid grid-cols-1 lg:grid-flow-col gap-5">
-          {why.map((item, index) => {
-            const Icon = item.number;
-
-            return (
-              <div key={index} className="flex items-start gap-5">
-                {/* Number */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full shrink-0 border-2 border-secondary text-secondary">
-                  {item.number}
-                </div>
-
-                {/* Text */}
-                <div className="flex flex-col">
-                  <h3 className="font-open text-lg font-bold text-black">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-500 font-open-sans font-medium text-sm leading-relaxed max-w-50">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Chevron */}
-                {index !== why.length - 1 && (
-                  <span className="hidden lg:flex text-secondary text-2xl">
-                    <ChevronRight />
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+    </div>
+  </div>
+</section>
   );
 }
